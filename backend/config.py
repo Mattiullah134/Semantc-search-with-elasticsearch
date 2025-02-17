@@ -1,0 +1,4 @@
+INDEX_NAME='apod'
+INDEX_NAME_WITH_NGRAM='apod_n_gram'
+INDEX_NAME_WITH_EMBEDDINGS='apod_embeddings'
+INDEX_NAME_WITH_RAW_DATA='apod_war_data'
