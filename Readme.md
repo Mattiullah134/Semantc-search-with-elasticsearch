@@ -1,6 +1,6 @@
 # Project Title
 
-Simple overview of use/purpose.
+Semantic search
 
 ## Tech Stack
 
@@ -9,10 +9,11 @@ This project is built using the following technologies:
 - **Elasticsearch** - For search and indexing
 - **React.js** - For frontend development
 - **Python** - As the core programming language
+- **Huging face SentenceTransformer** - As the model for transform the string into dense vector
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+This project implements a hybrid search engine that combines traditional n-gram tokenization and semantic search powered by embeddings from the Hugging Face model all-MiniLM-L6-v2. It uses K-Nearest Neighbors (KNN) for efficient search and ranking of results, alongside n-grams for token-based search.
 
 ## Getting Started
 
@@ -38,14 +39,15 @@ open http://localhost:5173/
 
 ```sh
 cd backend
-py -m venv .  # For Windows
-python -m venv .  # For Mac/Linux
+py -m venv .  # For Windows or
+python -m venv . 
 
 # Activate Virtual Environment
 # Windows (Command Prompt)
-.\Scripts\activate
-# Mac/Linux
-source ./bin/activate
+Scripts\activate
+py index_data.py #for index simple data
+py index_data_embeddings.py #for index data with embedding for semantic search
+py index_data_pipeline.py #first clean the data using ingest pipeline and then index data with embedding
 
 pip install -r requirements.txt
 ```
@@ -60,31 +62,14 @@ pip install -r requirements.txt
 
 Your project should now be up and running! 🚀
 
-## Help
-
-Any advice for common problems or issues.
-```sh
-command to run if program contains helper info
-```
 
 ## Authors
 
 Contributors' names and contact info
 
-ex. Matti Ullah
-ex. https://www.linkedin.com/in/matti-ullah-3417a4240/
+Matti Ullah 
+https://www.linkedin.com/in/matti-ullah-3417a4240/
 
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
 
 ## Acknowledgments
 
