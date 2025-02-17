@@ -1,6 +1,5 @@
 from utils import create_es_cient
 from typing import List
-from os import path
 from config import INDEX_NAME_WITH_NGRAM
 from elasticsearch import Elasticsearch
 import json
@@ -15,7 +14,7 @@ def index_document(docs: List[dict]):
         raise Exception('unable to send the docs to elasticsearch' , e)
     
 def create_index(es: Elasticsearch):
-    es.indices.delete(index=INDEX_NAME_WITH_NGRAM)
+    # es.indices.delete(index=INDEX_NAME_WITH_NGRAM)
     return es.indices.create(index= INDEX_NAME_WITH_NGRAM , settings={
         "analysis":{
             "analyzer":{

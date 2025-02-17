@@ -1,7 +1,7 @@
 from fastapi import FastAPI,Request
 from utils import create_es_cient
 from fastapi.middleware.cors import CORSMiddleware
-from config import INDEX_NAME,INDEX_NAME_WITH_RAW_DATA , INDEX_NAME_WITH_EMBEDDINGS
+from config import INDEX_NAME_WITH_NGRAM , INDEX_NAME_WITH_EMBEDDINGS
 from sentence_transformers import SentenceTransformer
 # Create a FastAPI application
 app = FastAPI()
@@ -10,9 +10,9 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["*"],   
     allow_headers=["*"],
-)  
+)    
 # Define a route at the root web address ("/")
 @app.get("/")
 def read_root(request: Request):
@@ -47,10 +47,10 @@ def read_root(request: Request):
             ]
         if not query["bool"]["must"]:
             query["bool"]["must"].append({"match_all": {}})
-        count = es.count(index=INDEX_NAME_WITH_RAW_DATA,body={"query":query} )
+        count = es.count(index=INDEX_NAME_WITH_NGRAM,body={"query":query} )
 
         data = es.search(
-            index=INDEX_NAME_WITH_RAW_DATA , 
+            index=INDEX_NAME_WITH_NGRAM , 
             body={
                 "query": query,
                 "from":from_page,
@@ -119,7 +119,7 @@ def get_year_count(request: Request):
         if search and len(search) > 3:
             
             data = es.search(
-                index=INDEX_NAME , 
+                index=INDEX_NAME_WITH_NGRAM , 
                 body={
                     "query":{
                         "bool":{
@@ -151,7 +151,7 @@ def get_year_count(request: Request):
         else:
             print('main else main hoon')
             data = es.search(
-                index=INDEX_NAME , 
+                index=INDEX_NAME_WITH_EMBEDDINGS , 
                 body={
                     
                     "aggs":{
