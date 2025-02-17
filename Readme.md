@@ -43,7 +43,7 @@ python -m venv .  # For Mac/Linux
 
 # Activate Virtual Environment
 # Windows (Command Prompt)
-.\Scripts\activate
+Scripts\activate
 # Mac/Linux
 source ./bin/activate
 
@@ -56,6 +56,7 @@ pip install -r requirements.txt
 2. Navigate to the project root directory and start the containers:
    ```sh
    docker compose up -d
+   py index_data.py
    ```
 
 Your project should now be up and running! 🚀
